@@ -137,6 +137,7 @@ def recommend_portfolio(intent_request):
     age = get_slots(intent_request)["age"]
     investment_amount = get_slots(intent_request)["investmentAmount"]
     risk_level = get_slots(intent_request)["riskLevel"]
+    
     source = intent_request["invocationSource"] # Gets the invocation source, for Lex dialogs "DialogCodeHook" is expected.
 
     if source == "DialogCodeHook":
@@ -146,7 +147,7 @@ def recommend_portfolio(intent_request):
         slots = get_slots(intent_request)
         
         # Validates user's input using the validate_data function
-        validation_result = validate_data(first_name, age, investment_amount, risk_level, intent_request)
+        validation_result = validate_data(age, investment_amount, intent_request)
         
         # Use the elicitSlot dialog action to re-prompt
         # for the first violation detected.
