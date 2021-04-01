@@ -61,7 +61,7 @@ def validate_data(age, investment_amount, intent_request):
     # Validate the investment amount, it should be >= 5000
     if investment_amount is not None:
         investment_amount = parse_int(investment_amount)  # Since parameters are strings it's important to cast values
-        if usd_amount < 5000:
+        if investment_amount < 5000:
             return build_validation_result(
                 False,
                 "investmentAmount",
@@ -187,7 +187,7 @@ def recommend_portfolio(intent_request):
             "content": """{} thank you for your information;
             based on the risk level you defined, my recommendation is to choose an investment portfolio with {}
             """.format(
-                first_name, initial_recommendation
+                first_name, investment_recommendation
             ),
         },
     )
